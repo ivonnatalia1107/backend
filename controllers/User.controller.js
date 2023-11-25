@@ -7,14 +7,14 @@ const signUp = async (req, res) => {
         const existingUser = await User.findOne({mail})
         if(existingUser){
             return res.json({
-                message: "user already exists"
+                message: "mail registrado"
             })
         }
         const user = new User(req.body)
         user.hashPassword(password)
         await user.save()
         return res.json({
-            message: 'User was created successfully',
+            message: 'Usuario creado',
             detail: user.onSignUpGenerateJWT()
         })
     } catch (err) {
@@ -31,13 +31,13 @@ const login = async (req, res) => {
         const userFound = await User.findOne({ mail })
         if(!userFound) {
             return res.json({
-                message: "user not found"
+                message: "usuario no encontrado, registrate "
             })
         }
         const isCorrectPassword = await bcrypt.compareSync(password, userFound.password)
         if (!isCorrectPassword) {
             return res.json({
-                message: 'wrong password'
+                message: 'acceso denegado, clave invalida'
             })
         }
 
@@ -57,7 +57,7 @@ const getUsers = async (req, res) => {
     try {
         const resp = await User.find()
         return res.json({
-            message: 'Users',
+            message: 'Usuarios',
             detail: resp
         })
     } catch (err) {
@@ -73,12 +73,12 @@ const updateUser = async (req, res) => {
         const newData = req.body
 
         const resp = await User.findByIdAndUpdate(
-            newData.userId,
+            newData._id,
             { $set: newData },
             { new: true })
 
         return res.json({
-            message: 'User updated successfully',
+            message: 'Usuario actualizado',
             detail: resp
         })
     } catch (err) {
@@ -91,10 +91,10 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const resp = await User.findByIdAndDelete(req.body.userId)
+        const resp = await User.findByIdAndDelete(req.body._id)
 
         return res.json({
-            message: 'User deleted successfully',
+            message: 'Usuario eliminado',
             detail: resp
         })
     } catch (err) {
