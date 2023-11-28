@@ -11,7 +11,7 @@ mercadopago.configure({
     access_token: accessTokenMP || "",
 })
 
-Mercado_Pago.post("/", async (req, res) => {
+Mercado_Pago.post("/checkout", async (req, res) => {
 
     const product = Product(req.body)
 try {
