@@ -1,17 +1,7 @@
-const express = require('express');
-const {Router} = require("express");
-const mercadopago = require("mercadopago");
-const Product = require('../models/Product.model')
-
-const Mercado_Pago = express.Router();
-const accessTokenMP = "TEST-1911582956099988-112611-4e90dcedd06c521a812c2f5210705a2c-383911558"
+const Product = require('../models/Product.model');
 
 
-mercadopago.configure({
-    access_token: accessTokenMP || "",
-})
-
-Mercado_Pago.post("/checkout", async (req, res) => {
+const checkoutProduct = async (req, res) => {
 
     const product = Product(req.body)
 try {
@@ -45,8 +35,7 @@ console.error(error.message);
 res.status(500).json(error.message);
 }
 
-})
+}
 
 
-
-module.exports = Mercado_Pago
+module.exports = { checkoutProduct }

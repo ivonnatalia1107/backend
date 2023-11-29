@@ -4,7 +4,7 @@ const express = require('express'),
     routes = require('./routes')
 const app = express()
 const cors = require('cors')
-const Mercado_Pago = require("./routes/Mercado_Pago.router")
+
 
 
 const corsOptions = {
@@ -17,7 +17,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(express.json())
 
-app.use("/Mercado_Pago", Mercado_Pago)
+
 
 mongoose.connect(process.env.MONGO_URI)
 
