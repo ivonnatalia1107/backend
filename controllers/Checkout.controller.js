@@ -4,14 +4,13 @@ const mercadopago = require("mercadopago");
 
 const checkoutProduct = async (req, res) => {
 
-    const product = Product(req.body)
+    const product = new Product(req.body)
 try {
-
 const preference = {
     items: [{
         title: product.name,
         picture_url: product.img,
-        unit_price: 1000, 
+        unit_price: product.price,
         currency_id: "CLP",
         description: product.description,
         quantity: 1,
