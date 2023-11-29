@@ -9,7 +9,7 @@ mercadopago.configure({
     access_token: accessTokenMP || "",
 })
 
-router.post("/",auth, checkoutProduct)
+router.post("/", checkoutProduct)
 
 
 module.exports = router
