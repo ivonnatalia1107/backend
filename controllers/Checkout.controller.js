@@ -1,4 +1,5 @@
 const Product = require('../models/Product.model');
+const mercadopago = require("mercadopago");
 
 
 const checkoutProduct = async (req, res) => {
@@ -10,7 +11,7 @@ const preference = {
     items: [{
         title: product.name,
         picture_url: product.img,
-        unit_price: product.price, 
+        unit_price: 1000, 
         currency_id: "CLP",
         description: product.description,
         quantity: 1,
