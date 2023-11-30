@@ -4,17 +4,6 @@ const mercadopago = require("mercadopago");
 
 const checkoutProduct = async (req, res) => {
 
-    const [quantity, setQuantity] = useState(1);
-
-  const handleQuantityChange = (event) => {
-   
-    const newQuantity = parseInt(event.target.value, 10);
-    if (!isNaN(newQuantity) && newQuantity >= 1) {
-      setQuantity(newQuantity);
-    }
-  };
-
-
     const product = new Product(req.body)
 try {
 const preference = {
