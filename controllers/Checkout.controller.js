@@ -3,6 +3,7 @@ const mercadopago = require("mercadopago");
 
 
 const checkoutProduct = async (req, res) => {
+    const [quantity, setQuantity] = useState(1);
 
     const product = new Product(req.body)
 try {
