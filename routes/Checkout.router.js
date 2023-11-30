@@ -1,9 +1,10 @@
 const express = require('express');
 const mercadopago = require("mercadopago");
 const router = express.Router();
-const accessTokenMP = "TEST-1911582956099988-112611-4e90dcedd06c521a812c2f5210705a2c-383911558"
+require('dotenv').config();
+const accessTokenMP = process.env.ACCES_TOKEN 
 const {checkoutProduct} = require('../controllers/Checkout.controller')
-const auth = require('../middlewares/auth')
+
 
 mercadopago.configure({
     access_token: accessTokenMP || "",

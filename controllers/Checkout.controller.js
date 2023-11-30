@@ -3,7 +3,6 @@ const mercadopago = require("mercadopago");
 
 
 const checkoutProduct = async (req, res) => {
-    const [quantity, setQuantity] = useState(1);
 
     const product = new Product(req.body)
 try {
@@ -14,13 +13,13 @@ const preference = {
         unit_price: product.price,
         currency_id: "CLP",
         description: product.description,
-        quantity: quantity,
+        quantity: 1,
 
     },
 ],
     back_urls: {
-        success: "http://localhost:3000/success",
-        failure: "http://localhost:3000/fallo",
+        success: "https://github.com/ivonnatalia1107/proyecto-e-commerce/success",
+        failure: "https://github.com/ivonnatalia1107/proyecto-e-commerce/fallo",
 
     },
 
