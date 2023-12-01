@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 
 const signUp = async (req, res) => {
     try {
-        const { mail, password } = req.body
+        const { mail, password, name } = req.body
         const existingUser = await User.findOne({mail})
         if(existingUser){
             return res.json({
@@ -27,7 +27,7 @@ const signUp = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        const { mail, password } = req.body
+        const { mail, password, name } = req.body
         const userFound = await User.findOne({ mail })
         if(!userFound) {
             return res.json({
